@@ -262,7 +262,7 @@
       </section>
       <section id="cal" class="flex one seven-600 cal">
         <div class="full loading"><div class="spinner"></div></div>
-        <div class="full login" style="display:none">Amion Login: <input id="amionkey" type="text"/> <button id="login">Go</button></div>
+        <div class="full login" style="display:none">Amion Login<span id="wronglogin" style="color:red;display:none"> (incorrect login)</span>: <input id="amionkey" type="text"/> <button id="login">Go</button></div>
       </section>
       <section class="flex one" id="useUpload" style="display:none">
         <div class="upload">Upload calendar: <input id="uploadFile" type="file" /></div>
@@ -474,6 +474,12 @@
       function showLogin() {
         $('.loading').hide();
         $('.login').show();
+        
+        if (AMIONKEY) {
+          $('#wronglogin').show();
+        } else {
+          $('#wronglogin').hide();
+        }
       }
 
       function handleToggleAll() {
